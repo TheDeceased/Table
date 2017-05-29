@@ -1,0 +1,16 @@
+{
+    "name": "the-deceased/table",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "The Deceased",
+            "email": "Deceased.Ag@yandex.ru"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "TheDeceased\\Table\\": "src/"
+        }
+    }
+}
