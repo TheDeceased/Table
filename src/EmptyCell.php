@@ -2,17 +2,17 @@
 
 namespace TheDeceased\Table;
 
-class SpannedCell implements CellInterface
+class EmptyCell implements CellInterface
 {
-
-    /**
-     * @var int
-     */
+    /** @var int */
     private $colspan;
+    /** @var int */
+    private $rowspan;
 
-    public function __construct($colspan)
+    public function __construct($colspan = 1, $rowspan = 1)
     {
         $this->colspan = $colspan;
+        $this->rowspan = $rowspan;
     }
 
     /**
@@ -36,12 +36,7 @@ class SpannedCell implements CellInterface
      */
     public function rowspan()
     {
-        return 1;
-    }
-
-    public function isVisible()
-    {
-        return false;
+        return $this->rowspan;
     }
 
     /**
@@ -63,5 +58,13 @@ class SpannedCell implements CellInterface
     public function getStyle($format)
     {
         return [];
+    }
+
+    /**
+     * @return bool
+     */
+    public function isVisible()
+    {
+        return true;
     }
 }

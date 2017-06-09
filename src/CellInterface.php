@@ -4,33 +4,38 @@ namespace TheDeceased\Table;
 
 interface CellInterface
 {
-	/**
-	 * @return string
-	 */
-	public function value();
+    /**
+     * @return string
+     */
+    public function value();
 
-	/**
-	 * @return int
-	 */
-	public function colspan();
+    /**
+     * @return int
+     */
+    public function colspan();
 
-	/**
-	 * @return int
-	 */
-	public function rowspan();
+    /**
+     * @return int
+     */
+    public function rowspan();
 
-	/**
-	 * @return FontInterface
-	 */
-	public function getFont();
+    /**
+     * @param string $format
+     * @param array  $style
+     *
+     * @return $this
+     */
+    public function setStyle($format, $style);
 
-	/**
-	 * @return string
-	 */
-	public function borders();
+    /**
+     * @param string $format
+     *
+     * @return array
+     */
+    public function getStyle($format);
 
-	/**
-	 * @return bool
-	 */
-	public function isVisible();
+    /**
+     * @return bool
+     */
+    public function isVisible();
 }

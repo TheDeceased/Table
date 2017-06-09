@@ -55,7 +55,10 @@ class Range implements RangeInterface
      */
     public function getStyles($format)
     {
-        return isset($this->styles[$format]) ? $this->styles[$format] : [];
+        $commonStyle = isset($this->styles['common']) ? $this->styles['common'] : [];
+        $style = isset($this->styles[$format]) ? $this->styles[$format] : [];
+
+        return array_merge($commonStyle, $style);
     }
 
     /**

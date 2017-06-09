@@ -92,4 +92,9 @@ interface TableInterface
      * @return int
      */
     public function getHeight();
+
+    /**
+     * @return Range
+     */
+    public function getBounds();
 }
