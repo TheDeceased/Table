@@ -43,13 +43,15 @@ class Row implements RowInterface
     public function getRowSpannedCells()
     {
         $spanned = [];
-        foreach ($this->cells as $index => $cell) {
+        $index = 0;
+        foreach ($this->cells as $cell) {
             if ($cell->rowspan() > 1) {
                 $spanned[$index] = [
                     'row' => $cell->rowspan() - 1,
                     'col' => $cell->colspan() - 1,
                 ];
             }
+            $index += $cell->colspan();
         }
         return $spanned;
     }
