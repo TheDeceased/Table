@@ -16,8 +16,10 @@ class Table implements TableInterface
         if (!empty($this->rowSpan)) {
             $row->addRowSpanCells($this->rowSpan);
             $this->rowSpan = array_filter(array_map(function ($e) {
-                return $e['row'] - 1;
-            }, $this->rowSpan));
+                return ['row' => $e['row'] - 1, 'col' => $e['col']];
+            }, $this->rowSpan), function ($e) {
+                return !empty($e['row']);
+            });
         }
 
         foreach ($row->getRowSpannedCells() as $index => $spans) {
