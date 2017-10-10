@@ -23,7 +23,7 @@ interface RowInterface
      *
      * @return void
      */
-    public function addRowSpanCells($spans);
+    public function addRowSpanCells($spans = []);
 
     /**
      * @return CellInterface[]
@@ -76,4 +76,9 @@ interface RowInterface
      * @return int
      */
     public function getWidth();
+
+    /**
+     * @return CellInterface[]
+     */
+    public function clear();
 }

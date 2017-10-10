@@ -10,6 +10,11 @@ class Row implements RowInterface
     private $styles = [];
     private $width = 0;
 
+    /**
+     * @param array $rowData
+     *
+     * @return Row
+     */
     public static function createFromArray($rowData)
     {
         $row = new Row();
@@ -24,6 +29,11 @@ class Row implements RowInterface
         return $row;
     }
 
+    /**
+     * @param CellInterface $cell
+     *
+     * @return $this
+     */
     public function add(CellInterface $cell)
     {
         $this->cells[] = $cell;
@@ -31,15 +41,24 @@ class Row implements RowInterface
         return $this;
     }
 
-    public function addRowSpanCells($spanCells)
+    /**
+     * @param array $spanCells
+     */
+    public function addRowSpanCells($spanCells = [])
     {
-        foreach ($spanCells as $index => $spans) {
-            $cell = new SpannedCell($spans['col'] + 1);
-            array_splice($this->cells, $index, 0, [$cell]);
-            $this->width += $cell->colspan();
+        $originalCells = $this->clear();
+        foreach ($originalCells as $originalCell) {
+            do {
+                $span = !empty($spanCells[$this->width]) ? $spanCells[$this->width] : [];
+                $cell = !empty($span['row']) ? new SpannedCell($span['col'] + 1) : $originalCell;
+                $this->add($cell);
+            } while ($cell instanceof SpannedCell);
         }
     }
 
+    /**
+     * @return array
+     */
     public function getRowSpannedCells()
     {
         $spanned = [];
@@ -127,5 +146,14 @@ class Row implements RowInterface
     public function getWidth()
     {
         return $this->width;
+    }
+
+    /**
+     * @return CellInterface[]
+     */
+    public function clear()
+    {
+        $this->width = 0;
+        return array_splice($this->cells, 0);
     }
 }
