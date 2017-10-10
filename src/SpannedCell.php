@@ -64,4 +64,12 @@ class SpannedCell implements CellInterface
     {
         return [];
     }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return static::TYPE_AUTO;
+    }
 }

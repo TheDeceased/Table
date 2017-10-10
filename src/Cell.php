@@ -88,4 +88,12 @@ class Cell implements CellInterface
 
         return array_merge($commonStyle, $style);
     }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return !empty($this->cellData['type']) ? $this->cellData['type'] : static::TYPE_AUTO;
+    }
 }

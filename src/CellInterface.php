@@ -4,6 +4,9 @@ namespace TheDeceased\Table;
 
 interface CellInterface
 {
+    const TYPE_AUTO = "auto";
+    const TYPE_TEXT = "text";
+
     /**
      * @return string
      */
@@ -38,4 +41,9 @@ interface CellInterface
      * @return bool
      */
     public function isVisible();
+
+    /**
+     * @return string
+     */
+    public function getType();
 }

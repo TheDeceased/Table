@@ -67,4 +67,12 @@ class EmptyCell implements CellInterface
     {
         return true;
     }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return static::TYPE_AUTO;
+    }
 }
