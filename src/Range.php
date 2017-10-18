@@ -72,4 +72,12 @@ class Range implements RangeInterface
         $this->styles[$format] = $styles;
         return $this;
     }
+
+    /**
+     * @return bool
+     */
+    public function isEmpty()
+    {
+        return false;
+    }
 }

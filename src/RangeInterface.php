@@ -38,4 +38,9 @@ interface RangeInterface
      * @return $this
      */
     public function setStyles($format, $styles);
+
+    /**
+     * @return bool
+     */
+    public function isEmpty();
 }

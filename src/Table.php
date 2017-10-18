@@ -168,10 +168,12 @@ class Table implements TableInterface
     }
 
     /**
-     * @return Range
+     * @return RangeInterface
      */
     public function getBounds()
     {
-        return new Range([0, 0], [$this->getWidth() - 1, $this->getHeight() - 1]);
+        $width = $this->getWidth();
+        $height = $this->getHeight();
+        return $width && $height ? new Range([0, 0], [$width - 1, $height - 1]) : new EmptyRange();
     }
 }
