@@ -57,9 +57,10 @@ class Row implements RowInterface
         $currentWidth = $this->width;
         $extraSpannedCellsCount = max(array_keys($spanCells)) + 1 - $currentWidth;
         if ($extraSpannedCellsCount > 0) {
-            for ($i = $currentWidth; $i < $currentWidth + $extraSpannedCellsCount; $i++) {
+            for ($i = $currentWidth; $i < $currentWidth + $extraSpannedCellsCount;) {
                 $span = !empty($spanCells[$this->width]) ? $spanCells[$this->width] : [];
                 $this->add(new SpannedCell($span['col'] + 1));
+                $i += $span['col'] + 1;
             }
         }
     }
