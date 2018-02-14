@@ -97,4 +97,14 @@ interface TableInterface
      * @return Range
      */
     public function getBounds();
+
+    /**
+     * @return null
+     */
+    public function setPageBreak();
+
+    /**
+     * @return int[]
+     */
+    public function getPageBreaks();
 }

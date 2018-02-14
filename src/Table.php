@@ -10,6 +10,7 @@ class Table implements TableInterface
     private $columnsStyles = [];
     private $ranges = [];
     private $width = 0;
+    private $pageBreakAt;
 
     public function addRow(RowInterface $row)
     {
@@ -175,5 +176,22 @@ class Table implements TableInterface
         $width = $this->getWidth();
         $height = $this->getHeight();
         return $width && $height ? new Range([0, 0], [$width - 1, $height - 1]) : new EmptyRange();
+    }
+
+
+    /**
+     * @return null
+     */
+    public function setPageBreak()
+    {
+        $this->pageBreakAt[] = $this->getHeight();
+    }
+
+    /**
+     * @return int[]
+     */
+    public function getPageBreaks()
+    {
+        return $this->pageBreakAt;
     }
 }
